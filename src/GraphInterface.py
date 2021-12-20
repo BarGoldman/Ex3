@@ -1,7 +1,4 @@
-from diGraph import DiGraph
-
-
-class GraphInterface (DiGraph):
+class GraphInterface :
     """This abstract class represents an interface of a graph."""
 
     def v_size(self) -> int:
