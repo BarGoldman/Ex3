@@ -1,3 +1,5 @@
+from typing import List
+
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
 
