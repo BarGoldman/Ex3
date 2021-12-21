@@ -3,5 +3,6 @@ class Node:
         self.id = i
         self.weigh = 0
         self.tag = 0
+        self.info = ""
         self.x = pos_x
         self.y = pos_y
