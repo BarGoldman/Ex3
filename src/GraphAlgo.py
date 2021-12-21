@@ -13,14 +13,14 @@ from src.Node import Node
 def min_val(nodes: dict()) -> int:
     m = sys.maxsize
     temp = -1
-    for i in nodes.keys:
+    for i in range(len(nodes)):
         if nodes[i].info == "white":
             if nodes[i].weigh < m:
                 m = nodes[i].weigh
                 temp = nodes[i].id
 
     if temp == -1:
-        for i in nodes.keys:
+        for i in range(len(nodes)):
             if nodes[i].info == "white":
                 temp = nodes[i].id
                 break
@@ -30,7 +30,7 @@ def min_val(nodes: dict()) -> int:
 
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self, g: DiGraph):
+    def __init__(self, g: DiGraph=None):
         self.graph = g
 
     def get_graph(self) -> GraphInterface:
@@ -71,13 +71,12 @@ class GraphAlgo(GraphAlgoInterface):
     #         json.dump(i, f)
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
-        ans = ()
+
         nodes = self.path(id1)
         if nodes[id2].weigh == sys.maxsize:
-            ans[0] = float('inf')
-            ans[1] = []
+            ans = (float('inf'), [])
         else:
-            ans[0] = nodes[id2]
+            w = nodes[id2].weigh
             p = []
             p.insert(0, id2)
             j = nodes[id2].tag
@@ -85,8 +84,9 @@ class GraphAlgo(GraphAlgoInterface):
                 p.insert(0, j)
                 j = nodes[j].tag
             p.insert(0, id1)
-            ans[1] = p
-            return ans
+            ans = (w, p)
+
+        return ans
 
     def path(self, id1: int) -> dict():
         nodes = dict()
@@ -95,7 +95,6 @@ class GraphAlgo(GraphAlgoInterface):
             if i in self.graph.dict_e[id1]:
                 n.weigh = self.graph.dict_e[id1][i]
             else:
-                n = Node(i, self.graph.dict_v[i])
                 n.weigh = sys.maxsize
             n.tag = -1
             n.info = "white"
@@ -104,7 +103,8 @@ class GraphAlgo(GraphAlgoInterface):
         nodes[id1].tag = 0
         i = id1
         t = 0
-        while t < self.graph.v_size():
+        size = self.get_graph().v_size()
+        while t < size:
             if nodes[i].info != "white":
                 t += 1
                 continue
@@ -116,7 +116,7 @@ class GraphAlgo(GraphAlgoInterface):
                     w = self.graph.dict_e[i][j]
                     m = min(temp_j, temp_i + w)
                     nodes[j].weigh = m
-                if temp_j != nodes[j].weigh:
+                if temp_j != nodes[j].weigh or i == id1:
                     nodes[j].tag = i
             i = min_val(nodes)
             t += 1

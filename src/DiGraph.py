@@ -6,16 +6,15 @@ class DiGraph(GraphInterface):
     def __init__(self):
         self.dict_v=dict()
         self.dict_e=dict(dict())
-        self.v_size=0
-        self.e_size=0
+        self.v_s=0
+        self.e_s=0
         self.mc=0
 
-
     def v_size(self) -> int:
-        return self.v_size
+        return self.v_s
 
     def e_size(self) -> int:
-        return self.e_size
+        return self.e_s
 
     def get_all_v(self) -> dict:
         return self.dict_v
@@ -46,7 +45,7 @@ class DiGraph(GraphInterface):
         self.dict_v or weight<0 or id2 in self.dict_e[id1]):
             return
         self.dict_e[id1][id2]=weight
-        self.e_size+=1
+        self.e_s+=1
         self.mc+=1
         if id2 in self.dict_e[id1]:
             return True
@@ -61,7 +60,7 @@ class DiGraph(GraphInterface):
         self.dict_v[node_id]=pos
         self.dict_e[node_id]={}
         self.mc+=1
-        self.v_size+=1
+        self.v_s+=1
         if node_id in self.dict_v:
             return True
         else:

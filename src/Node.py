@@ -1,8 +1,10 @@
 class Node:
-    def __init__(self, i, pos_x, pos_y):
+    def __init__(self, i, pos: tuple):
         self.id = i
         self.weigh = 0
         self.tag = 0
         self.info = ""
-        self.x = pos_x
-        self.y = pos_y
+        if pos != None:
+            self.x = pos[0]
+            self.y = pos[1]
+            self.z = pos[2]
