@@ -56,7 +56,6 @@ class DiGraph(GraphInterface):
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
         if node_id in self.dict_v:
             return
-        #n=Node (node_id,pos[0],pos[1])
         self.dict_v[node_id]=pos
         self.dict_e[node_id]={}
         self.mc+=1

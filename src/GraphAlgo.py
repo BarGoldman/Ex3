@@ -30,7 +30,7 @@ def min_val(nodes: dict()) -> int:
 
 class GraphAlgo(GraphAlgoInterface):
 
-    def __init__(self, g: DiGraph=None):
+    def __init__(self, g: DiGraph = None):
         self.graph = g
 
     def get_graph(self) -> GraphInterface:
@@ -69,11 +69,12 @@ class GraphAlgo(GraphAlgoInterface):
     #      json.dump(Edge, f)
     #      for i in Edge:
     #         json.dump(i, f)
-
     def shortest_path(self, id1: int, id2: int) -> (float, list):
 
-        nodes = self.path(id1)
-        if nodes[id2].weigh == sys.maxsize:
+        nodes = self.path(id1, 1)
+        if id1 == id2:
+            ans = (0, [])
+        elif nodes[id2].weigh == sys.maxsize:
             ans = (float('inf'), [])
         else:
             w = nodes[id2].weigh
@@ -88,7 +89,7 @@ class GraphAlgo(GraphAlgoInterface):
 
         return ans
 
-    def path(self, id1: int) -> dict():
+    def path(self, id1: int, key: int):
         nodes = dict()
         for i in self.graph.dict_v.keys():
             n = Node(i, self.graph.dict_v[i])
@@ -120,14 +121,123 @@ class GraphAlgo(GraphAlgoInterface):
                     nodes[j].tag = i
             i = min_val(nodes)
             t += 1
-        return nodes
+        if key == 1:
+            return nodes
+        m = -sys.maxsize
+        for i in nodes:
+            if nodes[i].weigh > m:
+                m = nodes[i].weigh
+        return m
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
-        pass
+        if node_lst.__len__() == 0:
+            return []
+        if node_lst.__len__() == 1:
+            return node_lst, 0
+        count = 0
+        n1 = node_lst[0]
+        ans = []
+        while node_lst.__len__() != 0:
+            k = -1
+            m = sys.maxsize
+            for n2 in node_lst:
+                if n1 == n2:
+                    continue
+                l_temp = self.help_tsp(n1, n2)
+                temp = l_temp[0]
+                del l_temp[0]
+                if temp < m:
+                    m = temp
+                    k = n2
+            if node_lst.__len__() == 1:
+                ans.append(n1)
+                node_lst.remove(n1)
+                break
+            if m == sys.maxsize and node_lst.__len__() != 1:
+                return []
+            t = self.shortest_path(n1, k)
+            l_temp = t[1]
+            count += t[0]
+            for i in l_temp:
+                if i == k:
+                    continue
+                ans.append(i)
+            node_lst.remove(n1)
+            n1 = k
+        li = [ans, count]
+        return li
+
+    def help_tsp(self, id1, id2):
+        my_list = self.shortest_path(id1, id2)
+        if not my_list[1]:
+            return my_list[1]
+        w = my_list[0]
+        li = my_list[1]
+        li.insert(0, w)
+        return li
+
+    def is_connected(self) -> bool:
+        v = []
+        for i in self.graph.dict_v.keys():
+            v.insert(i, False)
+        if self.graph.v_size() == 0:
+            return True
+        q = []
+        for k in self.graph.dict_v.keys():
+            q.append(k)
+            break
+        while q.__len__() != 0:
+            temp = q[0]
+            del q[0]
+            for i in self.graph.dict_e[temp]:
+                if v[i]:
+                    continue
+                q.append(i)
+                v[i] = True
+        for i in range(len(v)):
+            if not v[i]:
+                return False
+            v[i] = False
+        di = self.revers()
+        for k in self.graph.dict_v.keys():
+            q.append(k)
+            break
+        while q.__len__() != 0:
+            temp = q[0]
+            del q[0]
+            for i in di[temp]:
+                if v[i]:
+                    continue
+                q.append(i)
+                v[i] = True
+        for i in range(len(v)):
+            if not v[i]:
+                return False
+        return True
+
+    def revers(self) -> dict(dict()):
+        ans = dict(dict())
+        for i in self.graph.dict_e:
+            ans[i] = {}
+        for i in self.graph.dict_e:
+            for j in self.graph.dict_e[i]:
+                w = self.graph.dict_e[i][j]
+                ans[j][i] = w
+        return ans
 
     def centerPoint(self) -> (int, float):
-
-        pass
+        if not self.is_connected():
+            ans = (-1, float('inf'))
+            return ans
+        m = sys.maxsize
+        k = -1
+        for i in self.graph.dict_v.keys():
+            temp = self.path(i, 0)
+            if temp < m:
+                m = temp
+                k = i
+        ans = (k, m)
+        return ans
 
     def plot_graph(self) -> None:
         pass
