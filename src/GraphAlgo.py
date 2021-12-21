@@ -8,6 +8,7 @@ from src.DiGraph import DiGraph
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
 from src.Node import Node
+from src.SaveJson import SaveJson
 
 
 def min_val(nodes: dict()) -> int:
@@ -32,6 +33,7 @@ class GraphAlgo(GraphAlgoInterface):
 
     def __init__(self, g: DiGraph = None):
         self.graph = g
+        self.s_j = SaveJson(g)
 
     def get_graph(self) -> GraphInterface:
         return self.graph
@@ -52,7 +54,11 @@ class GraphAlgo(GraphAlgoInterface):
         self.__init__(g)
 
     def save_to_json(self, file_name: str) -> bool:
-        pass
+        with open(file_name, "w") as f:
+            json.dump(self.s_j, indent=4, fp=f, default=lambda m: m.__dict__)
+
+    def to_dict(self):
+        return self.graph.di()
 
     # with open(file_name, 'w') as f:
     #     ob = requests.get(file_name).json()
@@ -91,10 +97,10 @@ class GraphAlgo(GraphAlgoInterface):
 
     def path(self, id1: int, key: int):
         nodes = dict()
-        for i in self.graph.dict_v.keys():
-            n = Node(i, self.graph.dict_v[i])
-            if i in self.graph.dict_e[id1]:
-                n.weigh = self.graph.dict_e[id1][i]
+        for i in self.graph.Nodes.keys():
+            n = Node(i, self.graph.Nodes[i])
+            if i in self.graph.Edges[id1]:
+                n.weigh = self.graph.Edges[id1][i]
             else:
                 n.weigh = sys.maxsize
             n.tag = -1
@@ -110,11 +116,11 @@ class GraphAlgo(GraphAlgoInterface):
                 t += 1
                 continue
             nodes[i].info = "black"
-            for j in self.graph.dict_e[i].keys():
+            for j in self.graph.Edges[i].keys():
                 temp_j = nodes[j].weigh
                 temp_i = nodes[i].weigh
                 if temp_i != sys.maxsize:
-                    w = self.graph.dict_e[i][j]
+                    w = self.graph.Edges[i][j]
                     m = min(temp_j, temp_i + w)
                     nodes[j].weigh = m
                 if temp_j != nodes[j].weigh or i == id1:
@@ -178,18 +184,18 @@ class GraphAlgo(GraphAlgoInterface):
 
     def is_connected(self) -> bool:
         v = []
-        for i in self.graph.dict_v.keys():
+        for i in self.graph.Nodes.keys():
             v.insert(i, False)
         if self.graph.v_size() == 0:
             return True
         q = []
-        for k in self.graph.dict_v.keys():
+        for k in self.graph.Nodes.keys():
             q.append(k)
             break
         while q.__len__() != 0:
             temp = q[0]
             del q[0]
-            for i in self.graph.dict_e[temp]:
+            for i in self.graph.Edges[temp]:
                 if v[i]:
                     continue
                 q.append(i)
@@ -199,7 +205,7 @@ class GraphAlgo(GraphAlgoInterface):
                 return False
             v[i] = False
         di = self.revers()
-        for k in self.graph.dict_v.keys():
+        for k in self.graph.Nodes.keys():
             q.append(k)
             break
         while q.__len__() != 0:
@@ -217,11 +223,11 @@ class GraphAlgo(GraphAlgoInterface):
 
     def revers(self) -> dict(dict()):
         ans = dict(dict())
-        for i in self.graph.dict_e:
+        for i in self.graph.Edges:
             ans[i] = {}
-        for i in self.graph.dict_e:
-            for j in self.graph.dict_e[i]:
-                w = self.graph.dict_e[i][j]
+        for i in self.graph.Edges:
+            for j in self.graph.Edges[i]:
+                w = self.graph.Edges[i][j]
                 ans[j][i] = w
         return ans
 
@@ -231,7 +237,7 @@ class GraphAlgo(GraphAlgoInterface):
             return ans
         m = sys.maxsize
         k = -1
-        for i in self.graph.dict_v.keys():
+        for i in self.graph.Nodes.keys():
             temp = self.path(i, 0)
             if temp < m:
                 m = temp
