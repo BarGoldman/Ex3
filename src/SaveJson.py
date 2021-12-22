@@ -19,6 +19,7 @@ class SaveJson:
             for i in g.Nodes.keys():
                 if j != 0:
                     self.Nodes.insert(j, {})
-                self.Nodes[j]["pos"] = g.Nodes[i]
+                if g.Nodes[i] is not None:
+                    self.Nodes[j]["pos"] = g.Nodes[i]
                 self.Nodes[j]["id"] = i
                 j += 1

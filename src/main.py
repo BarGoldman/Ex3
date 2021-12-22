@@ -21,6 +21,7 @@ def check():
     check0()
     check1()
     check2()
+    check3()
 
 
 def check0():
@@ -105,5 +106,19 @@ def check3():
 
 
 if __name__ == '__main__':
+    g1 = GraphAlgo()
+    g1.load_from_json("A0.json")
+    print("A0=",g1.centerPoint())
+    g1.load_from_json("A1.json")
+    print("A1=",g1.centerPoint())
+    g1.load_from_json("A2.json")
+    print("A2=",g1.centerPoint())
+    g1.load_from_json("A3.json")
+    print("A3=",g1.centerPoint())
+    g1.load_from_json("A4.json")
+    print("A4=",g1.centerPoint())
+    g1.load_from_json("A5.json")
+    print("A05",g1.centerPoint())
+
     check()
 

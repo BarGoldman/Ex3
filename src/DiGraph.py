@@ -10,8 +10,6 @@ class DiGraph(GraphInterface):
         self.e_s=0
         self.mc=0
 
-    def di(self):
-        return self.__dict__
 
     def v_size(self) -> int:
         return self.v_s
@@ -21,6 +19,12 @@ class DiGraph(GraphInterface):
 
     def get_all_v(self) -> dict:
         return self.Nodes
+        # dict_=dict()
+        # for i in self.Nodes.keys():
+        #     temp1=self.all_out_edges_of_node(i).__len__()
+        #     temp2=self.all_in_edges_of_node(i).__len__()
+        #     dict_[i]=str(i)+":|edges out| "+str(temp1)+" |edges in| "+str(temp2)
+        # return dict_
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         ans = dict()
@@ -70,15 +74,15 @@ class DiGraph(GraphInterface):
 
 
     def remove_node(self, node_id: int) -> bool:
-        if node_id not in self.dict_v:
-            return
-        del self.dict_e[node_id]
-        del self.dict_v[node_id]
-        for i in self.dict_e.keys():
-            if 0 in self.dict_e[i]:
-                del self.dict_e[i][0]
-                self.e_size-=1
-        self.v_size-=1
+        if node_id not in self.Nodes:
+            return False
+        del self.Edges[node_id]
+        del self.Nodes[node_id]
+        for i in self.Edges.keys():
+            if 0 in self.Edges[i]:
+                del self.Edges[i][0]
+                self.e_s-=1
+        self.v_s-=1
         self.mc+=1
         if node_id not in self.Nodes:
             return True
@@ -87,10 +91,10 @@ class DiGraph(GraphInterface):
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
         if (node_id1 not in self.Nodes or node_id2 not in
-        self.Nodes or node_id2 in self.Edges[node_id1]):
+        self.Nodes or node_id2 not in self.Edges[node_id1]):
             return
-        del self.dict_e[node_id1][node_id2]
-        self.e_size -= 1
+        del self.Edges[node_id1][node_id2]
+        self.e_s -= 1
         self.mc += 1
         if node_id2 not in self.Edges[node_id1]:
             return True
@@ -98,24 +102,7 @@ class DiGraph(GraphInterface):
             return False
 
     def __repr__(self):
-        count=0;
-        s=""
-        s+="Nodes:["
-        for k in self.Nodes.keys():
-            if count!=0:
-                s+=","
-            s+="{pos: "+ str(self.Nodes[k])+" id: "+str(k)+" }"
-            count+=1
-
-        count=0
-        s+="] Edges:["
-        for i in self.Edges.keys():
-            for j in self.Edges[i].keys():
-                if count != 0:
-                    s += ","
-                count += 1
-                s+="{src= "+str(i)+" w= "+str(self.Edges[i][j])+" dest= "+str(j)+"}"
-        s+="]"
+        s="|V|="+str(self.v_s)+" , |E|="+str(self.e_s)
         return s
 
 

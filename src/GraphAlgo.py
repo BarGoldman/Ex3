@@ -55,10 +55,17 @@ class GraphAlgo(GraphAlgoInterface):
                 w = k["w"]
                 g.add_edge(src, dest, w)
         self.__init__(g)
+        if self.get_graph() == g:
+            return True
+        return False
 
     def save_to_json(self, file_name: str) -> bool:
         with open(file_name, "w") as f:
             json.dump(self.s_j, indent=4, fp=f, default=lambda m: m.__dict__)
+        g_temp = GraphAlgo()
+        if g_temp.load_from_json(file_name):
+            return True
+        return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
 
@@ -218,8 +225,7 @@ class GraphAlgo(GraphAlgoInterface):
 
     def centerPoint(self) -> (int, float):
         if not self.is_connected():
-            ans = (-1, float('inf'))
-            return ans
+            return
         m = sys.maxsize
         k = -1
         for i in self.graph.Nodes.keys():
