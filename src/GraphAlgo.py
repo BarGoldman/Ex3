@@ -44,8 +44,11 @@ class GraphAlgo(GraphAlgoInterface):
             di = json.load(fp)
             for k in di["Nodes"]:
                 i = k["id"]
-                pos = k["pos"]
-                g.add_node(i, pos)
+                if k.__len__() > 1:
+                    pos = k["pos"]
+                    g.add_node(i, pos)
+                else:
+                    g.add_node(i)
             for k in di["Edges"]:
                 src = k["src"]
                 dest = k["dest"]
@@ -57,24 +60,6 @@ class GraphAlgo(GraphAlgoInterface):
         with open(file_name, "w") as f:
             json.dump(self.s_j, indent=4, fp=f, default=lambda m: m.__dict__)
 
-    def to_dict(self):
-        return self.graph.di()
-
-    # with open(file_name, 'w') as f:
-    #     ob = requests.get(file_name).json()
-    #     Edge = []
-    #
-    #     for i in self.graph.dict_e:
-    #         for j in self.graph.dict_e[i]:
-    #             edge = {"src ": i,
-    #                     "w ": self.graph.dict_e[i][j],
-    #                     "dest": j}
-    #             Edge.append(edge)
-    #      ob["Edge"].appae
-    #      json.dump("Edge: ", f)
-    #      json.dump(Edge, f)
-    #      for i in Edge:
-    #         json.dump(i, f)
     def shortest_path(self, id1: int, id2: int) -> (float, list):
 
         nodes = self.path(id1, 1)
