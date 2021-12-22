@@ -1,5 +1,6 @@
 from DiGraph import DiGraph
 from GraphAlgo import GraphAlgo
+from src.SaveJson import SaveJson
 
 
 def check():
@@ -43,10 +44,12 @@ def check0():
     print(g.all_in_edges_of_node(1))
     print(g.all_out_edges_of_node(1))
     g_algo = GraphAlgo(g)
-    g_algo.load_from_json("A5.json")
+    # g_algo.load_from_json("A5.json")
     print(g_algo.get_graph().get_all_v())
-    # g_algo.load_from_json("einav.json")
+    g_algo.load_from_json("einav.json")
     g_algo.save_to_json("e.json")
+    # g_algo.load_from_json("e.json")
+    s_j = SaveJson(g_algo.graph)
     print(g_algo.shortest_path(0, 3))
     print(g_algo.TSP([0, 3, 8]))
     print(g_algo.is_connected())
@@ -77,7 +80,7 @@ def check2():
     file = '../data/A5.json'
     g_algo.load_from_json(file)
     g_algo.get_graph().remove_edge(13, 14)
-    #g_algo.save_to_json(file + "_edited")
+    # g_algo.save_to_json(file + "_edited")
     dist, path = g_algo.shortest_path(1, 7)
     print(dist, path)
     dist, path = g_algo.shortest_path(47, 19)
@@ -87,7 +90,7 @@ def check2():
     dist, path = g_algo.shortest_path(2, 20)
     print(dist, path)
     print(g_algo.TSP([1, 2, 3]))
-    #g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 def check3():
@@ -113,4 +116,4 @@ def check3():
 
 if __name__ == '__main__':
     check()
-    #check2()
+    # check2()

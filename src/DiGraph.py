@@ -4,8 +4,8 @@ from src.GraphInterface import GraphInterface
 
 class DiGraph(GraphInterface):
     def __init__(self):
-        self.Edges=dict()
-        self.Nodes=dict(dict())
+        self.Edges=dict(dict())
+        self.Nodes=dict()
         self.v_s=0
         self.e_s=0
         self.mc=0
@@ -20,7 +20,7 @@ class DiGraph(GraphInterface):
         return self.e_s
 
     def get_all_v(self) -> dict:
-        return self.Edges
+        return self.Nodes
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         ans = dict()
@@ -96,4 +96,27 @@ class DiGraph(GraphInterface):
             return True
         else:
             return False
+
+    def __repr__(self):
+        count=0;
+        s=""
+        s+="Nodes:["
+        for k in self.Nodes.keys():
+            if count!=0:
+                s+=","
+            s+="{pos: "+ str(self.Nodes[k])+" id: "+str(k)+" }"
+            count+=1
+
+        count=0
+        s+="] Edges:["
+        for i in self.Edges.keys():
+            for j in self.Edges[i].keys():
+                if count != 0:
+                    s += ","
+                count += 1
+                s+="{src= "+str(i)+" w= "+str(self.Edges[i][j])+" dest= "+str(j)+"}"
+        s+="]"
+        return s
+
+
 
