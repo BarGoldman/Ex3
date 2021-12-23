@@ -68,4 +68,4 @@ class TestGraphAlgo(TestCase):
         self.assertEqual(g1.centerPoint(), (40, 9.291743173960954))
 
     def test_plot_graph(self):
-        pass
+        self.g_algo.plot_graph()

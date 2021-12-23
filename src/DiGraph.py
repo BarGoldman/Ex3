@@ -1,5 +1,6 @@
 
 from src.GraphInterface import GraphInterface
+import random
 
 
 
@@ -66,7 +67,11 @@ class DiGraph(GraphInterface):
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
         if node_id in self.Nodes:
             return
-        self.Nodes[node_id]=pos
+        if pos==None:
+            x, y, z = random.uniform(0, 100), random.uniform(0, 100),0
+            self.Nodes[node_id] =(x,y,z)
+        else:
+            self.Nodes[node_id]=pos
         self.Edges[node_id]={}
         self.mc+=1
         self.v_s+=1

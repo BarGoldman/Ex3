@@ -3,7 +3,8 @@ import sys
 
 import requests
 from typing import List
-
+import matplotlib.pyplot as plt
+import numpy as np
 from src.DiGraph import DiGraph
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
@@ -43,10 +44,15 @@ class GraphAlgo(GraphAlgoInterface):
         with open(file_name, "r") as fp:
             di = json.load(fp)
             for k in di["Nodes"]:
-                i = k["id"]
+                i = int(k["id"])
                 if k.__len__() > 1:
-                    pos = k["pos"]
-                    g.add_node(i, pos)
+                    if type(k["pos"]) == list:
+                        pos=k["pos"]
+                        t = (pos[0], pos[1], pos[2])
+                    else:
+                        pos = (k["pos"]).split(',')
+                        t = (pos[0], pos[1], pos[2])
+                    g.add_node(i, t)
                 else:
                     g.add_node(i)
             for k in di["Edges"]:
@@ -238,4 +244,17 @@ class GraphAlgo(GraphAlgoInterface):
         return ans
 
     def plot_graph(self) -> None:
-        pass
+        for v in self.graph.Nodes.keys():
+            t = self.graph.Nodes[v]
+            x = float(t[0])
+            y = float(t[1])
+            print(x, y)
+            plt.plot(x, y, markersize=4, marker="o", color="red")
+            plt.text(x, y, str(v), color="green", fontsize=12)
+            for w in self.graph.Edges[v].keys():
+                t1 = self.graph.Nodes[w]
+                x_ = float(t1[0])
+                y_ = float(t1[1])
+                plt.annotate("", xy=(x, y), xytext=(x_, y_), arrowprops=dict(arrowstyle="<-"))
+
+        plt.show()

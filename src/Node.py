@@ -5,6 +5,6 @@ class Node:
         self.tag = 0
         self.info = ""
         if pos is not None:
-            self.x = pos[0]
-            self.y = pos[1]
-            self.z = pos[2]
+            self.x = float(pos[0])
+            self.y = float(pos[1])
+            self.z = float(pos[2])
