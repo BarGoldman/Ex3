@@ -45,7 +45,7 @@ def check0():
     print(g.all_out_edges_of_node(1))
     g_algo = GraphAlgo(g)
     print(g_algo.shortest_path(0, 3))
-    #g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 def check1():
@@ -60,7 +60,7 @@ def check1():
     print(g_algo.shortest_path(3, 1))
     print(g_algo.centerPoint())
     g_algo.save_to_json(file + '_saved')
-    #g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 def check2():
@@ -81,7 +81,7 @@ def check2():
     dist, path = g_algo.shortest_path(2, 20)
     print(dist, path)
     print(g_algo.TSP([1, 2, 3]))
-    #g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 def check3():
@@ -102,23 +102,34 @@ def check3():
     g_algo = GraphAlgo(g)
     print(g_algo.centerPoint())
     print(g_algo.TSP([1, 2, 4]))
-    #g_algo.plot_graph()
+    # g_algo.plot_graph()
 
 
 if __name__ == '__main__':
-    g1 = GraphAlgo()
-    g1.load_from_json("A0.json")
-    print("A0=",g1.centerPoint())
-    g1.load_from_json("A1.json")
-    print("A1=",g1.centerPoint())
-    g1.load_from_json("A2.json")
-    print("A2=",g1.centerPoint())
-    g1.load_from_json("A3.json")
-    print("A3=",g1.centerPoint())
-    g1.load_from_json("A4.json")
-    print("A4=",g1.centerPoint())
-    g1.load_from_json("A5.json")
-    print("A05",g1.centerPoint())
+    # g1 = GraphAlgo()
+    # g1.load_from_json("A0.json")
+    # print("A0=", g1.centerPoint())
+    # g1.load_from_json("A1.json")
+    # print("A1=", g1.centerPoint())
+    # g1.load_from_json("A2.json")
+    # print("A2=", g1.centerPoint())
+    # g1.load_from_json("A3.json")
+    # print("A3=", g1.centerPoint())
+    # g1.load_from_json("A4.json")
+    # print("A4=", g1.centerPoint())
+    # g1.load_from_json("A5.json")
+    # print("A05", g1.centerPoint())
+    g = DiGraph()  # creates an empty directed graph
+    for n in range(4):
+        g.add_node(n)
+    g.add_edge(0, 1, 1)
+    g.add_edge(1, 0, 1.1)
+    g.add_edge(1, 2, 1.3)
+    g.add_edge(2, 3, 1.1)
+    g.add_edge(1, 3, 1.9)
+    g.remove_edge(1, 3)
+    g.add_edge(1, 3, 10)
+    g_algo = GraphAlgo(g)
+    g_algo.save_to_json("einav")
 
-    check()
-
+    #check()

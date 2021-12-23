@@ -33,7 +33,7 @@ class GraphAlgo(GraphAlgoInterface):
 
     def __init__(self, g: DiGraph = None):
         self.graph = g
-        self.s_j = SaveJson(g)
+        # self.s_j = SaveJson(g)
 
     def get_graph(self) -> GraphInterface:
         return self.graph
@@ -60,8 +60,9 @@ class GraphAlgo(GraphAlgoInterface):
         return False
 
     def save_to_json(self, file_name: str) -> bool:
+        s_j = SaveJson(self.graph)
         with open(file_name, "w") as f:
-            json.dump(self.s_j, indent=4, fp=f, default=lambda m: m.__dict__)
+            json.dump(s_j, indent=4, fp=f, default=lambda m: m.__dict__)
         g_temp = GraphAlgo()
         if g_temp.load_from_json(file_name):
             return True

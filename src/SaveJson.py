@@ -11,7 +11,7 @@ class SaveJson:
                 for j in g.Edges[i]:
                     if k != 0:
                         self.Edges.insert(k, {})
-                    self.Edges[k]["src"] = j
+                    self.Edges[k]["src"] = i
                     self.Edges[k]["w"] = g.Edges[i][j]
                     self.Edges[k]["dest"] = j
                     k += 1

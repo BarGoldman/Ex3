@@ -2,6 +2,7 @@
 from src.GraphInterface import GraphInterface
 
 
+
 class DiGraph(GraphInterface):
     def __init__(self):
         self.Edges=dict(dict())
@@ -54,10 +55,12 @@ class DiGraph(GraphInterface):
         self.Edges[id1][id2]=weight
         self.e_s+=1
         self.mc+=1
+
         if id2 in self.Edges[id1]:
             return True
         else:
             return False
+
 
 
     def add_node(self, node_id: int, pos: tuple = None) -> bool:
@@ -102,7 +105,7 @@ class DiGraph(GraphInterface):
             return False
 
     def __repr__(self):
-        s="|V|="+str(self.v_s)+" , |E|="+str(self.e_s)
+        s="Graph: |V|="+str(self.v_s)+" , |E|="+str(self.e_s)
         return s
 
 
