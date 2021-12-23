@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from DiGraph import DiGraph
+from src.DiGraph import DiGraph
 
 
 class TestDiGraph(TestCase):
@@ -60,4 +60,3 @@ class TestDiGraph(TestCase):
     def test_remove_edge(self):
         self.g1.remove_edge(2, 3)
         self.assertEqual(True, 3 not in self.g1.Edges[2])
-
