@@ -47,7 +47,7 @@ class GraphAlgo(GraphAlgoInterface):
                 i = int(k["id"])
                 if k.__len__() > 1:
                     if type(k["pos"]) == list:
-                        pos=k["pos"]
+                        pos = k["pos"]
                         t = (pos[0], pos[1], pos[2])
                     else:
                         pos = (k["pos"]).split(',')
@@ -75,7 +75,6 @@ class GraphAlgo(GraphAlgoInterface):
         return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
-
         nodes = self.path(id1, 1)
         if id1 == id2:
             ans = (0, [])
@@ -248,7 +247,6 @@ class GraphAlgo(GraphAlgoInterface):
             t = self.graph.Nodes[v]
             x = float(t[0])
             y = float(t[1])
-            print(x, y)
             plt.plot(x, y, markersize=4, marker="o", color="red")
             plt.text(x, y, str(v), color="green", fontsize=12)
             for w in self.graph.Edges[v].keys():

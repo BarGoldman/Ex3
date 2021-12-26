@@ -20,13 +20,13 @@ class DiGraph(GraphInterface):
         return self.e_s
 
     def get_all_v(self) -> dict:
-        return self.Nodes
-        # dict_=dict()
-        # for i in self.Nodes.keys():
-        #     temp1=self.all_out_edges_of_node(i).__len__()
-        #     temp2=self.all_in_edges_of_node(i).__len__()
-        #     dict_[i]=str(i)+":|edges out| "+str(temp1)+" |edges in| "+str(temp2)
-        # return dict_
+        #return self.Nodes
+        dict_=dict()
+        for i in self.Nodes.keys():
+            temp1=self.all_out_edges_of_node(i).__len__()
+            temp2=self.all_in_edges_of_node(i).__len__()
+            dict_[i]=str(i)+":|edges out| "+str(temp1)+" |edges in| "+str(temp2)
+        return dict_
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         ans = dict()
