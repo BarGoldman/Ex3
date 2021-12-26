@@ -5,7 +5,7 @@ from src.GraphAlgo import GraphAlgo
 
 
 class TestBigGraph(TestCase):
-    file="1000Nodes.json"
+    file = "10000Nodes.json"
     g = DiGraph()
     g_algo = GraphAlgo(g)
     g_algo.load_from_json(file)
@@ -20,7 +20,7 @@ class TestBigGraph(TestCase):
         self.g_algo.save_to_json("test")
 
     def test_shortest_path(self):
-        self.g_algo.shortest_path(230,420)
+        self.g_algo.shortest_path(230, 420)
 
     def test_tsp(self):
         self.g_algo.TSP([1, 2, 4])

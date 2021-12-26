@@ -131,6 +131,8 @@ if __name__ == '__main__':
     # g.add_edge(1, 3, 10)
     #g_algo = GraphAlgo()
     # g_algo.save_to_json("einav")
-    #g_algo.load_from_json("A5.json")
+    # g_algo.load_from_json("T0.json")
+    # g_algo.save_to_json("mic")
+
     check()
 

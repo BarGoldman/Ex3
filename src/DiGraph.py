@@ -69,7 +69,7 @@ class DiGraph(GraphInterface):
             return
         if pos==None:
             x, y, z = random.uniform(0, 100), random.uniform(0, 100),0
-            self.Nodes[node_id] =(x,y,z)
+            self.Nodes[node_id] =(x,y,z,"None")
         else:
             self.Nodes[node_id]=pos
         self.Edges[node_id]={}
