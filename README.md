@@ -15,7 +15,7 @@ this program can lode directional graphs and perform the following functions:
   return The nodes id, min-maximum distance.
 - **TSP** - Computes a list of consecutive nodes which go over all the nodes in cities the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of the solution the lower the better.
 
-During the README you can see the comparisons to our solution performance for our implementation in java.
+in WIKI you can see the comparisons to our solution performance for our implementation in java.
 
  ## Part 1️⃣: 
  ### DiGraph inheritance GraphInterface:
