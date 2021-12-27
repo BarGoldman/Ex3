@@ -46,6 +46,9 @@ each node is represented using a pair (other_node_id, weight)|
 | `plot_graph(self)` | Plots the graph |
 
 
+ ## Part 3️⃣: 
+
+
 
 
  
