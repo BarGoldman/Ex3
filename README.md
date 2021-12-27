@@ -16,8 +16,7 @@ During the README you can see the comparisons to our solution performance for ou
 | `v_size(self)` |Returns the number of vertices in this graph|
 | `e_size(self)` |Returns the number of edges in this graph |
 | `get_all_v(self)` |return a dictionary of all the nodes in the Graph, each node is represented using a pair  (node_id, node_data)|
-| `all_in_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected to (into) node_id ,
-each node is represented using a pair (other_node_id, weight)|
+| `all_in_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected to (into) node_id ,each node is represented using a pair (other_node_id, weight)|
 | `all_out_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected from node_id , each node is represented using a pair (other_node_id, weight)|
 | `get_mc(self)` |Returns the current version of this graph|
 | `add_edge(self, id1: int, id2: int, weight: float)` |Adds an edge to the graph|
