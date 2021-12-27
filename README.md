@@ -9,10 +9,44 @@ This task is built on our previous Ex2 task : Design and implementation of direc
 
 During the README you can see the comparisons to our solution performance for our implementation in java.
 
-Part :one: 
+ ## Part :one: 
+ ### DiGraph class implements GraphInterface:
+ | Methods  | Details |
+| ------------- | ------------- |
+| `v_size(self)` |return: the directed graph on which the algorithm works on |
+| `e_size(self)` |return: the directed graph on which the algorithm works on |
+| `get_all_v(self)` |return: the directed graph on which the algorithm works on |
+| `all_in_edges_of_node(self, id1: int)` |return: the directed graph on which the algorithm works on |
+| `all_out_edges_of_node(self, id1: int)` |return: the directed graph on which the algorithm works on |
+| `get_mc(self)` |return: the directed graph on which the algorithm works on |
+| `add_node(self, node_id: int, pos: tuple = None)` |return: the directed graph on which the algorithm works on |
+| `remove_node(self, node_id: int)` |return: the directed graph on which the algorithm works on |
+| `remove_edge(self, node_id1: int, node_id2: int)` |return: the directed graph on which the algorithm works on |
+| ` __repr__(self)` |return: the directed graph on which the algorithm works on |
+
+ ## Part :two:
+ ### GraphAlgo class implements GraphAlgoInterface:
+ Realization of the department that inherits from the (abstract) GraphAlgoInterface department
+
+  | Methods  | Details |
+| ------------- | ------------- |
+| `__init__(self, g: DiGraph = None)` |Returns the number of vertices in this graph| ??? 
+| `get_graph(self)` |return: the directed graph on which the algorithm works on |
+| `load_from_json(self, file_name: str)`| Loads a graph from a json file |
+| `save_to_json(self, file_name: str)`| Saves the graph in JSON format to a file |
+| `shortest_path(self, id1: int, id2: int)` | Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm |
+| `path(self, id1: int, key: int)` | Finds the shortest path that visits all the nodes in the list | ???
+| `TSP(self, node_lst: List[int])` | Finds the shortest path that visits all the nodes in the list |
+| `help_tsp(self, id1, id2)` | Finds the shortest path that visits all the nodes in the list | ????
+| `is_connected(self)` | Finds the shortest path that visits all the nodes in the list | ??
+| `revers(self)` | Finds the node that has the shortest distance to it's farthest node | ????
+| `centerPoint(self)` | Finds the node that has the shortest distance to it's farthest node |
+| `plot_graph(self)` | Plots the graph |
+
+
+
 
  
-
 As part of this project, we can use a data structure and algorithms on graphs (oriented and weighted) when this program can create directional graphs and perform the following functions:
 
 - **isConnected** - will returns true if and only if there is a valid path from each node to each other node
