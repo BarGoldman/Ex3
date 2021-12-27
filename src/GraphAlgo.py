@@ -1,10 +1,8 @@
 import json
 import sys
 
-import requests
 from typing import List
 import matplotlib.pyplot as plt
-import numpy as np
 from src.DiGraph import DiGraph
 from src.GraphAlgoInterface import GraphAlgoInterface
 from src.GraphInterface import GraphInterface
@@ -134,7 +132,8 @@ class GraphAlgo(GraphAlgoInterface):
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
         if node_lst.__len__() == 0:
-            return []
+            ans = ([], float('inf'))
+            return ans
         if node_lst.__len__() == 1:
             return node_lst, 0
         count = 0
@@ -147,6 +146,9 @@ class GraphAlgo(GraphAlgoInterface):
                 if n1 == n2:
                     continue
                 l_temp = self.help_tsp(n1, n2)
+                if l_temp is None:
+                    ans = ([], float('inf'))
+                    return ans
                 temp = l_temp[0]
                 del l_temp[0]
                 if temp < m:
@@ -157,7 +159,8 @@ class GraphAlgo(GraphAlgoInterface):
                 node_lst.remove(n1)
                 break
             if m == sys.maxsize and node_lst.__len__() != 1:
-                return []
+                ans = ([], float('inf'))
+                return ans
             t = self.shortest_path(n1, k)
             l_temp = t[1]
             count += t[0]
@@ -172,8 +175,8 @@ class GraphAlgo(GraphAlgoInterface):
 
     def help_tsp(self, id1, id2):
         my_list = self.shortest_path(id1, id2)
-        if not my_list[1]:
-            return my_list[1]
+        if my_list == (float('inf'), []):
+            return None
         w = my_list[0]
         li = my_list[1]
         li.insert(0, w)

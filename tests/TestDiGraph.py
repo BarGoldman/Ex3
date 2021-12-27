@@ -31,9 +31,6 @@ class TestDiGraph(TestCase):
     def test_e_size(self):
         self.assertEqual(self.g.e_size(), 5)
 
-    def test_get_all_v(self):
-        self.assertEqual(self.g.get_all_v(), {0: '0:|edges out| 1 |edges in| 1', 1: '1:|edges out| 3 |edges in| 1', 2: '2:|edges out| 1 |edges in| 1', 3: '3:|edges out| 0 |edges in| 2'})
-
     def test_all_in_edges_of_node(self):
         self.assertEqual(self.g.all_in_edges_of_node(1), {0: 1})
 

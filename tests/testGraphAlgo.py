@@ -6,7 +6,7 @@ from src.GraphAlgo import GraphAlgo
 
 
 class TestGraphAlgo(TestCase):
-    g = DiGraph()  # creates an empty directed graph
+    g = DiGraph()
     for n in range(4):
         g.add_node(n)
     g.add_edge(0, 1, 1)
@@ -17,7 +17,7 @@ class TestGraphAlgo(TestCase):
     g.remove_edge(1, 3)
     g.add_edge(1, 3, 10)
     g_algo = GraphAlgo(g)
-    g1 = DiGraph()  # creates an empty directed graph
+    g1 = DiGraph()
     for n in range(5):
         g1.add_node(n)
     g1.add_edge(0, 1, 1)

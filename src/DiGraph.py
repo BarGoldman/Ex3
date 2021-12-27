@@ -1,5 +1,6 @@
 
 from src.GraphInterface import GraphInterface
+from src.Node import Node
 import random
 
 
@@ -20,13 +21,15 @@ class DiGraph(GraphInterface):
         return self.e_s
 
     def get_all_v(self) -> dict:
-        #return self.Nodes
-        dict_=dict()
+        my_dict=dict()
         for i in self.Nodes.keys():
             temp1=self.all_out_edges_of_node(i).__len__()
             temp2=self.all_in_edges_of_node(i).__len__()
-            dict_[i]=str(i)+":|edges out| "+str(temp1)+" |edges in| "+str(temp2)
-        return dict_
+            n=Node(i,self.Nodes[i])
+            n.edges_out=temp1
+            n.edges_in=temp2
+            my_dict[i]=n
+        return my_dict
 
     def all_in_edges_of_node(self, id1: int) -> dict:
         ans = dict()
@@ -109,7 +112,8 @@ class DiGraph(GraphInterface):
         else:
             return False
 
-    def __repr__(self):
+
+    def __str__(self):
         s="Graph: |V|="+str(self.v_s)+" , |E|="+str(self.e_s)
         return s
 
