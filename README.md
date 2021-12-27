@@ -10,9 +10,9 @@ This project is built on our previous Ex2 project: Design and implementation of 
 this program can lode directional graphs and perform the following functions:
 
 - **isConnected** - will returns true if and only if there is a valid path from each node to each other node
-- **shortestPathDist** - Computes the length of the shortest path between src to dest 
-- **shortestPath** - Computes the length of the shortest path between src to dest 
-- **Center** - Finds the NodeData which minimizes the max distance to all the other nodes Assuming the graph isConnected, elese return null.
+- **shortestpath** - Computes the length of the shortest path between src to dest 
+- **Center** - Finds the node that has the shortest distance to it's farthest node.
+  return The nodes id, min-maximum distance.
 - **TSP** - Computes a list of consecutive nodes which go over all the nodes in cities the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of the solution the lower the better.
 
 During the README you can see the comparisons to our solution performance for our implementation in java.
