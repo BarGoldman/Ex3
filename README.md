@@ -7,7 +7,7 @@ int this project we implements a data structure of a weighted and directed graph
 the implementation includes a class of graphs and a class of algorithms on graphs.
 
 This project is built on our previous Ex2 project: Design and implementation of directed and weighted graphs in Java.
-this program can create directional graphs and perform the following functions:
+this program can lode directional graphs and perform the following functions:
 
 - **isConnected** - will returns true if and only if there is a valid path from each node to each other node
 - **shortestPathDist** - Computes the length of the shortest path between src to dest 
