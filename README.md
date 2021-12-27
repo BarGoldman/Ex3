@@ -9,7 +9,7 @@ This task is built on our previous Ex2 task : Design and implementation of direc
 
 During the README you can see the comparisons to our solution performance for our implementation in java.
 
- ## Part :one: 
+ ## Part 1️⃣: 
  ### DiGraph class implements GraphInterface:
  | Methods  | Details |
 | ------------- | ------------- |
@@ -26,7 +26,7 @@ each node is represented using a pair (other_node_id, weight)|
 | `remove_edge(self, node_id1: int, node_id2: int)` |Removes an edge from the graph|
 | ` __repr__(self)` |return: the directed graph on which the algorithm works on | ???????????? 
 
- ## Part :two:
+ ## Part 2️⃣:
  ### GraphAlgo class implements GraphAlgoInterface:
  Realization of the department that inherits from the (abstract) GraphAlgoInterface department
 
