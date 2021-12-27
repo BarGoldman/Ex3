@@ -57,7 +57,9 @@ During the project:
 - we implemented the object **Node**. 
  
  ## Part 3️⃣: 
- graph Ao: 
+ graph A0: 
+ 
+ 
  ![WhatsApp Image 2021-12-27 at 15 49 09](https://user-images.githubusercontent.com/93201414/147477865-64892bf5-e280-4aec-896d-d7a3df6b8250.jpeg)
 
 
