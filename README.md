@@ -45,10 +45,10 @@ During the README you can see the comparisons to our solution performance for ou
 | `plot_graph(self)` | Plots the graph |
 
 During the project : 
-◾ **isConnected** - we used BFS algorithm and after we reverse the BFS.
-◾ **shortest_path** -  we used dykstra algorithm. 
-◾ **TSP** - we used in function shortest_path. 
-◾ we implemented the object **Node**. 
+- **isConnected** - we used BFS algorithm and after we reverse the BFS.
+- **shortest_path** -  we used dykstra algorithm. 
+- **TSP** - we used in function shortest_path. 
+- we implemented the object **Node**. 
  
  ## Part 3️⃣: 
 
