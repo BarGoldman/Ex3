@@ -3,9 +3,10 @@
 
 ### :pushpin: Implementation of a data structure of a weighted and directed graph in Python
 
-This task implements a data structure of a weighted and directed graph in Python, the implementation includes a class of graphs as well as a class of algorithms on graphs.
-This task is built on our previous Ex2 task : Design and implementation of directed and weighted graphs in Java.
+int this project we implements a data structure of a weighted and directed graph in Python,
+the implementation includes a class of graphs and a class of algorithms on graphs.
 
+This project is built on our previous Ex2 project: Design and implementation of directed and weighted graphs in Java.
 
 During the README you can see the comparisons to our solution performance for our implementation in java.
 
@@ -23,7 +24,7 @@ During the README you can see the comparisons to our solution performance for ou
 | `add_node(self, node_id: int, pos: tuple = None)` | Adds a node to the graph|
 | `remove_node(self, node_id: int)` | Removes a node from the graph|
 | `remove_edge(self, node_id1: int, node_id2: int)` |Removes an edge from the graph|
-| ` __repr__(self)` |return: the directed graph on which the algorithm works on | ???????????? 
+| `__repr__(self)` | prints an object |  
 
  ## Part 2️⃣:
  ### GraphAlgo class implements GraphAlgoInterface:
@@ -31,20 +32,19 @@ During the README you can see the comparisons to our solution performance for ou
 
   | Methods  | Details |
 | ------------- | ------------- |
-| `__init__(self, g: DiGraph = None)` |Returns the number of vertices in this graph| ??? 
 | `get_graph(self)` |return: the directed graph on which the algorithm works on |
 | `load_from_json(self, file_name: str)`| Loads a graph from a json file |
 | `save_to_json(self, file_name: str)`| Saves the graph in JSON format to a file |
 | `shortest_path(self, id1: int, id2: int)` | Returns the shortest path from node id1 to node id2 using Dijkstra's Algorithm |
-| `path(self, id1: int, key: int)` | Finds the shortest path that visits all the nodes in the list | ???
+| `path(self, id1: int, key: int)` | help function to shortest_path , if the Key different from 1 returns the maximum distance for the center| 
 | `TSP(self, node_lst: List[int])` | Finds the shortest path that visits all the nodes in the list |
-| `help_tsp(self, id1, id2)` | Finds the shortest path that visits all the nodes in the list | ????
-| `is_connected(self)` | Finds the shortest path that visits all the nodes in the list | ??
-| `revers(self)` | Finds the node that has the shortest distance to it's farthest node | ????
+| `help_tsp(self, id1, id2)` | Help function returns a list | 
+| `is_connected(self)` | Checking that the graph is linked |
+| `revers(self)` | help function to is_connected , revers the graph |
 | `centerPoint(self)` | Finds the node that has the shortest distance to it's farthest node |
 | `plot_graph(self)` | Plots the graph |
 
-◾ During the project, we implemented the department Node 
+◾ During the project, we implemented the object Node  
 
  ## Part 3️⃣: 
 
