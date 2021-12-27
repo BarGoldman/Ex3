@@ -13,16 +13,18 @@ During the README you can see the comparisons to our solution performance for ou
  ### DiGraph class implements GraphInterface:
  | Methods  | Details |
 | ------------- | ------------- |
-| `v_size(self)` |return: the directed graph on which the algorithm works on |
-| `e_size(self)` |return: the directed graph on which the algorithm works on |
-| `get_all_v(self)` |return: the directed graph on which the algorithm works on |
-| `all_in_edges_of_node(self, id1: int)` |return: the directed graph on which the algorithm works on |
-| `all_out_edges_of_node(self, id1: int)` |return: the directed graph on which the algorithm works on |
-| `get_mc(self)` |return: the directed graph on which the algorithm works on |
-| `add_node(self, node_id: int, pos: tuple = None)` |return: the directed graph on which the algorithm works on |
-| `remove_node(self, node_id: int)` |return: the directed graph on which the algorithm works on |
-| `remove_edge(self, node_id1: int, node_id2: int)` |return: the directed graph on which the algorithm works on |
-| ` __repr__(self)` |return: the directed graph on which the algorithm works on |
+| `v_size(self)` |Returns the number of vertices in this graph|
+| `e_size(self)` |Returns the number of edges in this graph |
+| `get_all_v(self)` |return a dictionary of all the nodes in the Graph, each node is represented using a pair  (node_id, node_data)|
+| `all_in_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected to (into) node_id ,
+each node is represented using a pair (other_node_id, weight)|
+| `all_out_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected from node_id , each node is represented using a pair (other_node_id, weight)|
+| `get_mc(self)` |Returns the current version of this graph|
+| `add_edge(self, id1: int, id2: int, weight: float)` |Adds an edge to the graph|
+| `add_node(self, node_id: int, pos: tuple = None)` | Adds a node to the graph|
+| `remove_node(self, node_id: int)` | Removes a node from the graph|
+| `remove_edge(self, node_id1: int, node_id2: int)` |Removes an edge from the graph|
+| ` __repr__(self)` |return: the directed graph on which the algorithm works on | ???????????? 
 
  ## Part :two:
  ### GraphAlgo class implements GraphAlgoInterface:
