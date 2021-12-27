@@ -23,7 +23,7 @@ During the README you can see the comparisons to our solution performance for ou
 | ------------- | ------------- |
 | `v_size(self)` |Returns the number of vertices in this graph|
 | `e_size(self)` |Returns the number of edges in this graph |
-| `get_all_v(self)` |return a dictionary of all the nodes in the Graph, each node is represented using a pair  (node_id, node_data)|
+| `get_all_v(self)` |return a dictionary of all the nodes in the Graph|
 | `all_in_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected to (into) node_id ,each node is represented using a pair (other_node_id, weight)|
 | `all_out_edges_of_node(self, id1: int)` |return a dictionary of all the nodes connected from node_id , each node is represented using a pair (other_node_id, weight)|
 | `get_mc(self)` |Returns the current version of this graph|
@@ -31,7 +31,6 @@ During the README you can see the comparisons to our solution performance for ou
 | `add_node(self, node_id: int, pos: tuple = None)` | Adds a node to the graph|
 | `remove_node(self, node_id: int)` | Removes a node from the graph|
 | `remove_edge(self, node_id1: int, node_id2: int)` |Removes an edge from the graph|
-| `__repr__(self)` | prints an object |  
 
  ## Part 2️⃣:
  ### GraphAlgo inheritance GraphAlgoInterface:
@@ -49,9 +48,9 @@ During the README you can see the comparisons to our solution performance for ou
 | `is_connected(self)` | Checking that the graph is linked |
 | `revers(self)` | help function to is_connected , revers the graph |
 | `centerPoint(self)` | Finds the node that has the shortest distance to it's farthest node |
-| `plot_graph(self)` | Plots the graph |
+| `plot_graph(self)` | show the graph |
 
-During the project : 
+During the project: 
 - **isConnected** - we used BFS algorithm and after we reverse the BFS.
 - **shortest_path** -  we used dykstra algorithm. 
 - **TSP** - we used in function shortest_path. 
