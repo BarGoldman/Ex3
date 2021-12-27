@@ -106,33 +106,5 @@ def check3():
 
 
 if __name__ == '__main__':
-    # g1 = GraphAlgo()
-    # g1.load_from_json("A0.json")
-    # print("A0=", g1.centerPoint())
-    # g1.load_from_json("A1.json")
-    # print("A1=", g1.centerPoint())
-    # g1.load_from_json("A2.json")
-    # print("A2=", g1.centerPoint())
-    # g1.load_from_json("A3.json")
-    # print("A3=", g1.centerPoint())
-    # g1.load_from_json("A4.json")
-    # print("A4=", g1.centerPoint())
-    # g1.load_from_json("A5.json")
-    # print("A05", g1.centerPoint())
-    # g = DiGraph()  # creates an empty directed graph
-    # for n in range(4):
-    #     g.add_node(n)
-    # g.add_edge(0, 1, 1)
-    # g.add_edge(1, 0, 1.1)
-    # g.add_edge(1, 2, 1.3)
-    # g.add_edge(2, 3, 1.1)
-    # g.add_edge(1, 3, 1.9)
-    # g.remove_edge(1, 3)
-    # g.add_edge(1, 3, 10)
-    #g_algo = GraphAlgo()
-    # g_algo.save_to_json("einav")
-    # g_algo.load_from_json("T0.json")
-    # g_algo.save_to_json("mic")
-
     check()
 

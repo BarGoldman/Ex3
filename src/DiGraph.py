@@ -87,8 +87,8 @@ class DiGraph(GraphInterface):
         del self.Edges[node_id]
         del self.Nodes[node_id]
         for i in self.Edges.keys():
-            if 0 in self.Edges[i]:
-                del self.Edges[i][0]
+            if node_id in self.Edges[i].keys():
+                del self.Edges[i][node_id]
                 self.e_s-=1
         self.v_s-=1
         self.mc+=1

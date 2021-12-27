@@ -15,14 +15,14 @@ from src.SaveJson import SaveJson
 def min_val(nodes: dict()) -> int:
     m = sys.maxsize
     temp = -1
-    for i in range(len(nodes)):
+    for i in nodes.keys():
         if nodes[i].info == "white":
             if nodes[i].weigh < m:
                 m = nodes[i].weigh
                 temp = nodes[i].id
 
     if temp == -1:
-        for i in range(len(nodes)):
+        for i in nodes.keys():
             if nodes[i].info == "white":
                 temp = nodes[i].id
                 break
@@ -34,7 +34,6 @@ class GraphAlgo(GraphAlgoInterface):
 
     def __init__(self, g: DiGraph = None):
         self.graph = g
-        # self.s_j = SaveJson(g)
 
     def get_graph(self) -> GraphInterface:
         return self.graph
@@ -181,9 +180,9 @@ class GraphAlgo(GraphAlgoInterface):
         return li
 
     def is_connected(self) -> bool:
-        v = []
+        v = dict()
         for i in self.graph.Nodes.keys():
-            v.insert(i, False)
+            v[i] = False
         if self.graph.v_size() == 0:
             return True
         q = []
@@ -198,7 +197,7 @@ class GraphAlgo(GraphAlgoInterface):
                     continue
                 q.append(i)
                 v[i] = True
-        for i in range(len(v)):
+        for i in v.keys():
             if not v[i]:
                 return False
             v[i] = False
@@ -214,7 +213,7 @@ class GraphAlgo(GraphAlgoInterface):
                     continue
                 q.append(i)
                 v[i] = True
-        for i in range(len(v)):
+        for i in v.keys():
             if not v[i]:
                 return False
         return True

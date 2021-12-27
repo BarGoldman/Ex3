@@ -8,3 +8,7 @@ class Node:
             self.x = float(pos[0])
             self.y = float(pos[1])
             self.z = float(pos[2])
+        self.edges_out = 0
+        self.edges_in = 0
+
+
