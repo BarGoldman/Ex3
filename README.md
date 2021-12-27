@@ -44,8 +44,12 @@ During the README you can see the comparisons to our solution performance for ou
 | `centerPoint(self)` | Finds the node that has the shortest distance to it's farthest node |
 | `plot_graph(self)` | Plots the graph |
 
-◾ During the project, we implemented the object Node  
-
+During the project : 
+◾ **isConnected** - we used BFS algorithm and after we reverse the BFS.
+◾ **shortest_path** -  we used dykstra algorithm. 
+◾ **TSP** - we used in function shortest_path. 
+◾ we implemented the object **Node**. 
+ 
  ## Part 3️⃣: 
 
 
