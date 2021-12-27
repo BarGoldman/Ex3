@@ -44,6 +44,7 @@ During the README you can see the comparisons to our solution performance for ou
 | `centerPoint(self)` | Finds the node that has the shortest distance to it's farthest node |
 | `plot_graph(self)` | Plots the graph |
 
+◾ During the project, we implemented the department Node 
 
  ## Part 3️⃣: 
 
