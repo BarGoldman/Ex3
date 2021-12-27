@@ -5,7 +5,7 @@ from src.GraphAlgo import GraphAlgo
 
 
 class TestBigGraph(TestCase):
-    file = "10000Nodes.json"
+    file = "100000.json"
     g = DiGraph()
     g_algo = GraphAlgo(g)
     g_algo.load_from_json(file)
