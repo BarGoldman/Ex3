@@ -18,7 +18,7 @@ this program can create directional graphs and perform the following functions:
 During the README you can see the comparisons to our solution performance for our implementation in java.
 
  ## Part 1️⃣: 
- ### DiGraph class implements GraphInterface:
+ ### DiGraph inheritance GraphInterface:
  | Methods  | Details |
 | ------------- | ------------- |
 | `v_size(self)` |Returns the number of vertices in this graph|
@@ -34,7 +34,7 @@ During the README you can see the comparisons to our solution performance for ou
 | `__repr__(self)` | prints an object |  
 
  ## Part 2️⃣:
- ### GraphAlgo class implements GraphAlgoInterface:
+ ### GraphAlgo inheritance GraphAlgoInterface:
  Realization of the department that inherits from the (abstract) GraphAlgoInterface department
 
   | Methods  | Details |
