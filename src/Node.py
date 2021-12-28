@@ -11,6 +11,6 @@ class Node:
         self.edges_out = 0
         self.edges_in = 0
 
-    def __repr__(self):
+    def __repr__(self):  # to print the "get_all_v" in the Digraph class
         s = str(self.id) + ":|edges out| " + str(self.edges_out) + " |edges in| " + str(self.edges_in)
         return s

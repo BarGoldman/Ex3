@@ -2,7 +2,7 @@ from src.DiGraph import DiGraph
 
 
 class SaveJson:
-    def __init__(self, g: DiGraph):
+    def __init__(self, g: DiGraph):  # turn the graph to be like A0,...,A5,T0
         self.Edges = [{}]
         self.Nodes = [{}]
         k = 0

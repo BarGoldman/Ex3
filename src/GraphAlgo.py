@@ -10,7 +10,8 @@ from src.Node import Node
 from src.SaveJson import SaveJson
 
 
-def min_val(nodes: dict()) -> int:
+def min_val(nodes: dict()) -> int:  # return the node with minimum weigh that still "white"
+    # -help function to the algo "shortest path"
     m = sys.maxsize
     temp = -1
     for i in nodes.keys():
@@ -36,7 +37,7 @@ class GraphAlgo(GraphAlgoInterface):
     def get_graph(self) -> GraphInterface:
         return self.graph
 
-    def load_from_json(self, file_name: str) -> bool:
+    def load_from_json(self, file_name: str) -> bool:  # load the graph from json
         g = DiGraph()
         with open(file_name, "r") as fp:
             di = json.load(fp)
@@ -62,7 +63,8 @@ class GraphAlgo(GraphAlgoInterface):
             return True
         return False
 
-    def save_to_json(self, file_name: str) -> bool:
+    def save_to_json(self, file_name: str) -> bool:  # save the graph in json format,
+        # use class "SaveJson" that return a graph  that have the same format like A0,...,A5,T0
         s_j = SaveJson(self.graph)
         with open(file_name, "w") as f:
             json.dump(s_j, indent=4, fp=f, default=lambda m: m.__dict__)
@@ -72,6 +74,7 @@ class GraphAlgo(GraphAlgoInterface):
         return False
 
     def shortest_path(self, id1: int, id2: int) -> (float, list):
+        # use function "path" that return the shortest dist and the path
         nodes = self.path(id1, 1)
         if id1 == id2:
             ans = (0, [])
@@ -90,7 +93,7 @@ class GraphAlgo(GraphAlgoInterface):
 
         return ans
 
-    def path(self, id1: int, key: int):
+    def path(self, id1: int, key: int):  # help function to the shortest path,tsp and center
         nodes = dict()
         for i in self.graph.Nodes.keys():
             n = Node(i, self.graph.Nodes[i])
@@ -131,6 +134,7 @@ class GraphAlgo(GraphAlgoInterface):
         return m
 
     def TSP(self, node_lst: List[int]) -> (List[int], float):
+        # return the shortest path that visit all the node in the list
         if node_lst.__len__() == 0:
             ans = ([], float('inf'))
             return ans
@@ -173,7 +177,7 @@ class GraphAlgo(GraphAlgoInterface):
         li = [ans, count]
         return li
 
-    def help_tsp(self, id1, id2):
+    def help_tsp(self, id1, id2):  # help function to the tsp
         my_list = self.shortest_path(id1, id2)
         if my_list == (float('inf'), []):
             return None
@@ -182,7 +186,7 @@ class GraphAlgo(GraphAlgoInterface):
         li.insert(0, w)
         return li
 
-    def is_connected(self) -> bool:
+    def is_connected(self) -> bool:  # check if the graph is connected-help function to center
         v = dict()
         for i in self.graph.Nodes.keys():
             v[i] = False
@@ -221,7 +225,7 @@ class GraphAlgo(GraphAlgoInterface):
                 return False
         return True
 
-    def revers(self) -> dict(dict()):
+    def revers(self) -> dict(dict()):  # transposes the graph
         ans = dict(dict())
         for i in self.graph.Edges:
             ans[i] = {}
@@ -231,7 +235,7 @@ class GraphAlgo(GraphAlgoInterface):
                 ans[j][i] = w
         return ans
 
-    def centerPoint(self) -> (int, float):
+    def centerPoint(self) -> (int, float):  # find the node that have the shortest distance to it's farthest node.
         if not self.is_connected():
             return
         m = sys.maxsize
@@ -244,7 +248,7 @@ class GraphAlgo(GraphAlgoInterface):
         ans = (k, m)
         return ans
 
-    def plot_graph(self) -> None:
+    def plot_graph(self) -> None:  # show the graph
         for v in self.graph.Nodes.keys():
             t = self.graph.Nodes[v]
             x = float(t[0])

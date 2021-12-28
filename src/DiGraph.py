@@ -14,13 +14,13 @@ class DiGraph(GraphInterface):
         self.mc=0
 
 
-    def v_size(self) -> int:
+    def v_size(self) -> int: #return how much node in the graph
         return self.v_s
 
-    def e_size(self) -> int:
+    def e_size(self) -> int: # return how much edge int the graph
         return self.e_s
 
-    def get_all_v(self) -> dict:
+    def get_all_v(self) -> dict:  #return a dict with all the node
         my_dict=dict()
         for i in self.Nodes.keys():
             temp1=self.all_out_edges_of_node(i).__len__()
@@ -31,7 +31,7 @@ class DiGraph(GraphInterface):
             my_dict[i]=n
         return my_dict
 
-    def all_in_edges_of_node(self, id1: int) -> dict:
+    def all_in_edges_of_node(self, id1: int) -> dict: #return a dict with all the edge that enter to the node
         ans = dict()
         if(id1 not in self.Edges):
             return ans
@@ -40,7 +40,7 @@ class DiGraph(GraphInterface):
                 ans[i] =self.Edges[i][id1]
         return ans
 
-    def all_out_edges_of_node(self, id1: int) -> dict:
+    def all_out_edges_of_node(self, id1: int) -> dict: #return a dict with all the edge that go out of the node
         ans=dict()
         if id1 not in self.Nodes:
             return ans
@@ -52,7 +52,7 @@ class DiGraph(GraphInterface):
     def get_mc(self) -> int:
         return self.mc
 
-    def add_edge(self, id1: int, id2: int, weight: float) -> bool:
+    def add_edge(self, id1: int, id2: int, weight: float) -> bool:  #insert edge to the graph
         if( id1 not in self.Nodes or id2 not in
         self.Nodes or weight<0 or id2 in self.Edges[id1]):
             return
@@ -67,7 +67,7 @@ class DiGraph(GraphInterface):
 
 
 
-    def add_node(self, node_id: int, pos: tuple = None) -> bool:
+    def add_node(self, node_id: int, pos: tuple = None) -> bool: #insert node to the graph
         if node_id in self.Nodes:
             return
         if pos==None:
@@ -84,7 +84,7 @@ class DiGraph(GraphInterface):
             return False
 
 
-    def remove_node(self, node_id: int) -> bool:
+    def remove_node(self, node_id: int) -> bool: #delete node from the graph
         if node_id not in self.Nodes:
             return False
         del self.Edges[node_id]
@@ -100,7 +100,7 @@ class DiGraph(GraphInterface):
         else:
             return False
 
-    def remove_edge(self, node_id1: int, node_id2: int) -> bool:
+    def remove_edge(self, node_id1: int, node_id2: int) -> bool: #delete edge from the graph
         if (node_id1 not in self.Nodes or node_id2 not in
         self.Nodes or node_id2 not in self.Edges[node_id1]):
             return
@@ -113,7 +113,7 @@ class DiGraph(GraphInterface):
             return False
 
 
-    def __str__(self):
+    def __str__(self): #to print the graph
         s="Graph: |V|="+str(self.v_s)+" , |E|="+str(self.e_s)
         return s
 

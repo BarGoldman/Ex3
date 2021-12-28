@@ -40,7 +40,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         algo(sys.argv[1])
 
-    else:
+    else:  # default option if there is no arguments
         algo("A0.json")
         print("----------------------")
         algo("A1.json")
